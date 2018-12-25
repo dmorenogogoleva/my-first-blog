@@ -2,6 +2,11 @@
 
 {% block content %}
     <article class="post">
+
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_edit' pk=post.pk %}">+</a>
+        {% endif %}
+        
         {% if post.published_date %}
             <div class="date">
                 {{ post.published_date }}
