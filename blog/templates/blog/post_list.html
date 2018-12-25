@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends 'blog/base.html' %}
 
-<head>
-  <meta name="msapplication-TileColor" content="#dc5f9f">
-  <meta name="theme-color" content="#dc5f9f">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>iwanttobealight</title>
-  <meta name="description" content="some content">
-  <link href="./style.css" rel="stylesheet">
-  <link rel="icon" href="./favicon.ico" sizes="32x32" type="image/x-icon">
-</head>
-
-<body>
-  <h1>hello world</h1>
-
+{% block content %}
   {% for post in posts %}
     <div>
       <p>published: {{ post.published_date }}</p>
-      <h1><a href="">{{ post.title }}</a></h1>
+        <h1>
+          <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+        </h1>
       <p>{{ post.text|linebreaksbr }}</p>
     </div>
   {% endfor %}
-  <script src="scripts/script.js"></script>
-</body>
-
-</html>
+{% endblock %}
